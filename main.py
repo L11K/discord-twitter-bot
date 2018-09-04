@@ -160,7 +160,7 @@ class StdOutListener(StreamListener):
                     webhook = Webhook.partial(match.group("id"), match.group("token"), adapter=RequestsWebhookAdapter())
                     try:
                         if "#HashTagTest" in text:
-                        webhook.send(embed=embed)
+                            webhook.send(embed=embed)
                     except discord.errors.HTTPException as error:
                         print('---------Error---------')
                         print('discord.errors.HTTPException')
