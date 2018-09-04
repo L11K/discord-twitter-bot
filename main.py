@@ -158,11 +158,11 @@ class StdOutListener(StreamListener):
                 if match:
                     webhook = Webhook.partial(match.group("id"), match.group("token"), adapter=RequestsWebhookAdapter())
                     try:
-                           if data_discord["Filtered_Text"]: # if Filtered_Text is present do the filtering
+                        if data_discord["Filtered_Text"]: # if Filtered_Text is present do the filtering
                             if any(Filtered_Text in text for Filtered_Text in data_discord["Filtered_Text"]):
-                            webhook.send(embed=embed)
+                                webhook.send(embed=embed)
                             else: #Filtered_Text was not present, always post.
-                            webhook.send(embed=embed)
+                                webhook.send(embed=embed)
                     except discord.errors.HTTPException as error:
                         print('---------Error---------')
                         print('discord.errors.HTTPException')
