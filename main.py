@@ -110,7 +110,7 @@ class StdOutListener(StreamListener):
                             media_type = 'gif'
 
                 if video_alert:
-                    text += " *[tweet has video]*"
+                    text += " **[tweet has video]**"
 
                 text = html.unescape(text)
 
@@ -159,6 +159,7 @@ class StdOutListener(StreamListener):
                 if match:
                     webhook = Webhook.partial(match.group("id"), match.group("token"), adapter=RequestsWebhookAdapter())
                     try:
+                        if "#HashTagTest" in text:
                         webhook.send(embed=embed)
                     except discord.errors.HTTPException as error:
                         print('---------Error---------')
