@@ -7,10 +7,6 @@ Got questions? [Join the bot's discord server!](https://discord.gg/Dkg79tc)
 
 [![](img/gif.gif)](https://discord.gg/Dkg79tc)
 
-## Heroku Deployment
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
 Remember to [activate](https://i.imgur.com/zOfa0Qm.png) the app. [View the logs here.](https://i.imgur.com/tWBoTuB.png)  
 Use this to initially deploy your discord-twitter-bot.
 
