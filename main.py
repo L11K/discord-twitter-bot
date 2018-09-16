@@ -3,6 +3,7 @@ from tweepy import OAuthHandler, Stream
 from tweepy.api import API
 from discord import Webhook, RequestsWebhookAdapter, Embed
 from time import gmtime, strftime
+from time import sleep
 import discord
 import random
 import json
@@ -10,6 +11,7 @@ import datetime
 import html
 import re
 from config import data_json
+import urllib3
 
 
 class StdOutListener(StreamListener):
@@ -69,18 +71,27 @@ class StdOutListener(StreamListener):
                                         '[@%s](https://twitter.com/%s)' % (userMention['screen_name'],
                                                                            userMention['screen_name']))
 
-                for hashtag in sorted(data['entities']["hashtags"], key=lambda k: k["text"], reverse=True):
-                    text = text.replace('#%s' % hashtag['text'],
-                                        '[#%s](https://twitter.com/hashtag/%s)' %(hashtag['text'],
-                                                                                  hashtag['text']))
 
                 media_url = ''
                 media_type = ''
                 if 'extended_tweet' in data:
+                    for hashtag in sorted(data['extended_tweet']['entities']["hashtags"], key=lambda k: k["text"],
+                                          reverse=True):
+                        text = text.replace('#%s' % hashtag['text'],
+                                            '[#%s](https://twitter.com/hashtag/%s)' % (hashtag['text'],
+                                                                                       hashtag['text']))
+                    
                     if 'media' in data['extended_tweet']['entities']:
                         for media in data['extended_tweet']['entities']['media']:
                             if media['type'] == 'photo':
                                 media_url = media['media_url']
+                                
+                for hashtag in sorted(data['entities']["hashtags"], key=lambda k: k["text"],
+                                      reverse=True):
+                    text = text.replace('#%s' % hashtag['text'],
+                                        '[#%s](https://twitter.com/hashtag/%s)' % (hashtag['text'],
+                                                                                   hashtag['text']))
+                                
 
                 if 'media' in data['entities']:
                     for media in data['entities']['media']:
@@ -227,4 +238,32 @@ if __name__ == '__main__':
     stream = Stream(auth, l)
 
     print('Twitter stream started.')
-    stream.filter(follow=data_json['twitter_ids'])
+    
+    while True:
+        try:
+            stream.filter(follow=data_json['twitter_ids'])
+        except urllib3.exceptions.ProtocolError as error:
+            print('---------Error---------')
+            print('This is probably caused by "Connection reset by peer." Ignore. Nothing you can do.')
+            print(error)
+            print('Sleeping for 10 seconds then continuing.')
+            sleep(10)
+            print('Twitter streaming continues.')
+            print('-----------------------')
+        except ConnectionResetError as error:
+            print('---------Error---------')
+            print('This is probably caused by "Connection reset by peer." Ignore. Nothing you can do.')
+            print(error)
+            print('Sleeping for 10 seconds then continuing.')
+            sleep(10)
+            print('Twitter streaming continues.')
+            print('-----------------------')
+        except Exception as error:
+            print('---------Error---------')
+            print('unknown error')
+            print("You've found an error. Please contact the owner (https://discord.gg/JV5eUB) "
+                  "and send him what follows below:")
+            print(error)
+            print(data_json)
+            print('-----------------------')
+            break
