@@ -1,12 +1,9 @@
-from html
-import unescape
+from html import unescape
 import re
-from discord
-import Webhook, RequestsWebhookAdapter, Embed
+from discord import Webhook, RequestsWebhookAdapter, Embed
 import discord
 import random
-from datetime
-import datetime
+from datetime import datetime
 
 
 COLORS = [
