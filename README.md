@@ -16,3 +16,5 @@
 This is a powerful twitter bot for discord. It allows you to follow up to 5000 Twitter users, track 400 words and 25 location boxes posting the content to as many Discord channels as you want. Furthermore you can customize which tweets to show.
 
 [**Read the documentation**](http://nntin.github.io/discord-twitter-bot/about/)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
