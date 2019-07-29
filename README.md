@@ -1,58 +1,18 @@
-# discord-twitter-bot
-Post tweets to Discord Webhook of certain twitter users.  
-Got questions? [Join the bot's discord server!](https://discord.gg/Dkg79tc)
+<h1 align="center">discord-twitter-bot</h1>
+<p align="center">Posts Twitter Tweets to Discord through Webhook</p>
 
+<p align="center">
+  <a href="https://discord.gg/Dkg79tc"><img alt="Invite Link" src="https://discordapp.com/api/guilds/295528852518731786/widget.png?style=shield"></a>
+  <a href="https://github.com/nntin/discord-twitter-bot/blob/master/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-brightgreen.svg"></a>
+  <a href="https://travis-ci.com/NNTin/discord-twitter-bot"><img alt="Build Status" src="https://api.travis-ci.com/NNTin/discord-twitter-bot.svg"></a>
+  <a href="https://github.com/nntin/discord-twitter-bot"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+  <a href="https://github.com/NNTin/discord-twitter-bot/commits/"><img alt="Last Commit" src="https://img.shields.io/github/last-commit/nntin/discord-twitter-bot.svg"></a>
+  <a href="https://github.com/NNTin/discord-twitter-bot/pulls"><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/nntin/discord-twitter-bot.svg"></a>
+  <a href="https://hub.docker.com/r/nntin/discord-twitter-bot"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/nntin/discord-twitter-bot.svg"></a>
+</p>
 
-## Preview
+# About
 
-[![](img/gif.gif)](https://discord.gg/Dkg79tc)
+This is a powerful twitter bot for discord. It allows you to follow up to 5000 Twitter users, track 400 words and 25 location boxes posting the content to as many Discord channels as you want. Furthermore you can customize which tweets to show.
 
-Remember to [activate](https://i.imgur.com/zOfa0Qm.png) the app. [View the logs here.](https://i.imgur.com/tWBoTuB.png)  
-Use this to initially deploy your discord-twitter-bot.
-
-To further configure the bot get Heroku CLI and run launcher.py.
-
-```coffeescript
-heroku login
-heroku git:clone -a <your heroku app name>
-cd <your heroku app name>
-git remote add origin https://github.com/NNTin/discord-twitter-bot
-git pull origin master
-python3 launcher.py
-git add .
-git commit -am "updated configuration"
-git push heroku
-```
-
-Heroku is a nice solution to host the bot for free.
-
-## YT Video to Heroku Deployment
-
-[![YT Video](https://img.youtube.com/vi/NwPcXBvStSI/0.jpg)](https://www.youtube.com/watch?v=NwPcXBvStSI)
-
-## Normal Setup
-
-Get Python >=3.5.3, <3.7
-
-```coffeescript
-python3 -m venv bot-env
-source bot-env/bin/activate
-git clone https://github.com/NNTin/discord-twitter-bot.git
-python3 discord-twitter-bot/launcher.py
-```
-
-First two lines are skip-able but are recommended if you are relying on an older version of discord.py.
-Third line clones the rewrite branch. Fourth line executes launcher.py
-
-Once you have set everything up you can run main.py directly. (Useful in combination with systemd, Upstart, PM2, etc.)
-
-![](https://i.imgur.com/TdJahu9.png)
-
-Useful links:
-* [Twitter API](https://developer.twitter.com/en/apps)
-* [What's a webhook?](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
-
-
-## Credits
-Rokxx for providing the [dota 2 twitter list](https://twitter.com/rokxx/lists/dota-2/members).  
-JacobWolf for providing the [twitter lists](https://twitter.com/JacobWolf/lists) for CS:GO, LoL, Overwatch, CoD and SSMB.
+[**Read the documentation**](http://nntin.github.io/discord-twitter-bot/about/)
